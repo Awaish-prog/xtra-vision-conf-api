@@ -3,7 +3,6 @@ import { generateJwtToken } from '../utils/jwt';
 import { createNewUserDb, findUserByEmail } from '../db/user.db';
 import { User } from '../types/user.type';
 import bcrypt from 'bcrypt';
-import { WithId } from 'mongodb';
 
 export async function signUpUserRepo({ email, name, password }: User){
     try{
