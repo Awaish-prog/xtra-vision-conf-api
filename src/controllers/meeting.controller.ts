@@ -1,9 +1,9 @@
-import { createMeetingRepo } from "../repositories/meeting.repository";
+import { createMeetingRepo, getMeetingsRepo } from "../repositories/meeting.repository";
 import { ApiResponse } from "../types/api.response";
 import { Meeting } from "../types/meeting.type";
 import { Request, Response } from "express";
 
-async function createMeeting(req: Request, res: Response){
+export async function createMeeting(req: Request, res: Response){
     try{
         res.json(await createMeetingRepo(req.body));
     }
@@ -13,5 +13,12 @@ async function createMeeting(req: Request, res: Response){
     }
 }
 
-
-export { createMeeting };
+export async function getMeetings(req: Request, res: Response){
+    try{
+        res.json(await getMeetingsRepo(req.params.hostId));
+    }
+    catch(e){
+        console.log(e);
+        res.json({ status: 404, data: { message: "Failed to get meetings" }});
+    }
+}

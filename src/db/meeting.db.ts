@@ -29,3 +29,13 @@ export async function createNewMeetingDb({ id, title, dateTime, hostId }: Meetin
         return null;
     }
 }
+
+export async function getMeetingsByHostId(hostId: string){
+    try{
+        const meetingCollection = db?.collection('meetings');
+        return await meetingCollection?.find({ hostId }).toArray();
+    }
+    catch(e){
+
+    }
+}

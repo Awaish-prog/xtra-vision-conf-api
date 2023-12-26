@@ -1,4 +1,4 @@
-import { createNewMeetingDb, findMeetingByDateAndId } from "../db/meeting.db";
+import { createNewMeetingDb, findMeetingByDateAndId, getMeetingsByHostId } from "../db/meeting.db";
 import { Meeting } from "../types/meeting.type";
 import { v4 as uuidv4 } from 'uuid';
 
@@ -18,5 +18,30 @@ export async function createMeetingRepo({ title, hostId, dateTime }: Meeting){
     catch(e){
         console.log(e);
         return { status: 500, data: { message: "Meeting creation failed..." }};
+    }
+}
+
+export async function getMeetingsRepo(hostId: string){
+    try{
+        const meetings = await getMeetingsByHostId(hostId);
+        const currentDate = new Date();
+        const previousMeetings: any[] = [];
+        const upcomingMeetings: any[] = [];
+        if(meetings && meetings.length){
+            meetings.forEach((meeting) => {
+                const date = new Date(meeting.dateTime);
+              
+                if (date < currentDate) {
+                    previousMeetings.push(meeting);
+                } else {
+                    upcomingMeetings.push(meeting);
+                }
+            });
+        }
+        return { status: 200, data: { previousMeetings, upcomingMeetings } }
+    }
+    catch(e){
+        console.log(e);
+        return { status: 404, data: { message: "Failed to get meetings" }};
     }
 }
