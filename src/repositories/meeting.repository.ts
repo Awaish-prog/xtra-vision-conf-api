@@ -9,7 +9,7 @@ export async function createMeetingRepo({ title, hostId, dateTime }: Meeting){
             return { status: 500, data: { message: "A meeting is already present at the same time." }};
         }
         const id: string = uuidv4();
-        
+
         if(await createNewMeetingDb({id, title, dateTime, hostId})){
             return { status: 200, data: { id, title, dateTime, hostId }};
         }

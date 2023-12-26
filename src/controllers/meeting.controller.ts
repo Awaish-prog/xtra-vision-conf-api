@@ -1,6 +1,4 @@
 import { createMeetingRepo, getMeetingsRepo } from "../repositories/meeting.repository";
-import { ApiResponse } from "../types/api.response";
-import { Meeting } from "../types/meeting.type";
 import { Request, Response } from "express";
 
 export async function createMeeting(req: Request, res: Response){

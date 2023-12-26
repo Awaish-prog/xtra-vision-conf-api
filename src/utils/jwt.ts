@@ -7,7 +7,7 @@ export function generateJwtToken( email: string ): string | null{
     console.error('JWT secret key is not defined.');
     return null;
   }
-  const payloadData = { email };
+  const payloadData = email;
 
   try {
     const token: string = jwt.sign(payloadData, secretKey);

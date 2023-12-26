@@ -20,7 +20,7 @@ export async function createNewMeetingDb({ id, title, dateTime, hostId }: Meetin
             id,
             title,
             dateTime,
-            hostId,
+            hostId
         })
         return meeting;
     }
