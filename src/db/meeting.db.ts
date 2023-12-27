@@ -36,6 +36,18 @@ export async function getMeetingsByHostId(hostId: string){
         return await meetingCollection?.find({ hostId }).toArray();
     }
     catch(e){
+        console.log(e);
+        return null;
+    }
+}
 
+export async function getMeetingsById(roomId: string){
+    try{
+        const meetingCollection = db?.collection('meetings');
+        return await meetingCollection?.findOne({ id: roomId })
+    }
+    catch(e){
+        console.log(e);
+        return null;
     }
 }

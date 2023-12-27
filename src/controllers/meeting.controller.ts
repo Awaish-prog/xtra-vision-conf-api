@@ -1,4 +1,4 @@
-import { createMeetingRepo, getMeetingsRepo } from "../repositories/meeting.repository";
+import { createMeetingRepo, getHostIdRepo, getMeetingsRepo } from "../repositories/meeting.repository";
 import { Request, Response } from "express";
 
 export async function createMeeting(req: Request, res: Response){
@@ -18,5 +18,15 @@ export async function getMeetings(req: Request, res: Response){
     catch(e){
         console.log(e);
         res.json({ status: 404, data: { message: "Failed to get meetings" }});
+    }
+}
+
+export async function getHostId(req: Request, res: Response){
+    try{
+        res.json(await getHostIdRepo(req.body.roomId));
+    }
+    catch(e){
+        console.log(e);
+        res.json({ status: 404, data: { message: "Meeting was not found" }});
     }
 }

@@ -1,4 +1,4 @@
-import { createNewMeetingDb, findMeetingByDateAndId, getMeetingsByHostId } from "../db/meeting.db";
+import { createNewMeetingDb, findMeetingByDateAndId, getMeetingsByHostId, getMeetingsById } from "../db/meeting.db";
 import { Meeting } from "../types/meeting.type";
 import { v4 as uuidv4 } from 'uuid';
 
@@ -38,10 +38,25 @@ export async function getMeetingsRepo(hostId: string){
                 }
             });
         }
+        
         return { status: 200, data: { previousMeetings, upcomingMeetings } }
     }
     catch(e){
         console.log(e);
         return { status: 404, data: { message: "Failed to get meetings" }};
+    }
+}
+
+export async function getHostIdRepo(roomId: string){
+    try{
+        const meeting = await getMeetingsById(roomId);
+        if(meeting){
+            return { status: 200, hostId: meeting.hostId };
+        }
+        return { status: 404, data: { message: "Meeting was not found" }};
+    }
+    catch(e){
+        console.log(e);
+        return { status: 404, data: { message: "Meeting was not found" }};
     }
 }

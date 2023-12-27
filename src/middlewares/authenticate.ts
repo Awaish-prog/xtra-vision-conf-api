@@ -6,7 +6,7 @@ export default function authenticate(req: Request, res: Response, next: NextFunc
     const email = req.header('email');
     
     if (!token){
-        return res.json({ status: 401, data: { message: "Auth token is not provide" }});
+        return res.json({ status: 401, data: { message: "Auth token is not provided" }});
     }
     const key: string = process.env.JWT_KEY ? process.env.JWT_KEY : ''; 
     const decoded = jwt.verify(token, key);
