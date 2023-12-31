@@ -1,21 +1,8 @@
-# Xtra vision conf Api
+# Xtra vision conf
 
 ## How to use
 
-## Setup api locally
-
-### Clone repository
-
-<!--```git clone https://github.com/Awaish-prog/xtra-vision-conf-api.git```-->
-
-### Navigate to path
-
-```cd xtra-vision-conf-api```
-
-### Install npm packages
-
-```npm install```
-
-### Run developement server
-
-```npm run dev```
+1. Go to this [link][http://awaish-khan-dev.mooo.com/].
+2. Sign up.
+3. Schedule or start a meeting.
+4. Join room and share link with others to join.
