@@ -6,7 +6,7 @@
 
 ### Clone repository
 
-```bash https://github.com/Awaish-prog/xtra-vision-conf-api.git ```
+<!--```git clone https://github.com/Awaish-prog/xtra-vision-conf-api.git```-->
 
 ### Navigate to path
 
