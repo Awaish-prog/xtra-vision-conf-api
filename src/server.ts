@@ -1,4 +1,4 @@
-import express, { Express, Request } from 'express';
+import express, { Express } from 'express';
 import route from "./routes/router";
 import { connectToMongoDB } from './db/connet.db';
 import cors from 'cors';
